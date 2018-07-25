@@ -108,49 +108,58 @@ var resultList = document.getElementById('result-list');
 
 //the chart needs to have the name of the item and then the totals of clicks to show on the graph.
 
-var img = [];
-
+// var img = [];
+var name = [];
+var votes = [];
 
 function updateChart(){
     for (var i = 0; i < allProducts.length; i++){
-        clicks[i] = allProducts[i].name;
-        votes[i] = allProducts[i].votes;
+    votes[i] = allProducts[i].votes;
+    name[i] = allProducts[i].name;   
     }
 }
 
-
-var data = {
-    labels: imgs,
-    datasets: [{
-        data: votes,
-        backgroundColor:[
-            'bisque', 
-            'darkgray',
-            'burlywood',
-            'lightblue',
-            'navy'
-        ],
-    hoverBackgroundColor: [
-        'purple',
-        'purple',
-        'purple',
-        'purple',
-        'purple',
-    ]
-}]
+//---------to show the data in a list form 
+function showPicList(){
+    var picList = document.getElementById('pic-list');
+    picList.innerHTML = '';
+    picList.hidden = false;
+    picList.textContent ='Click to hide list';
+    for (var i = 0; i < allProducts.length; i++){
+        var piLiEL = document.createElement ('li');
+        piLiEL.textContent = allProducts[i].votes + ', ' + allProducts[i].name + 'votes';
+        picList.appendChild(piLiEL);
+    };
 };
 
 
+//-------- This is suppose to be a chart---------/
 var ctx = document.getElementById('mychart').getContext('2d');
 function drawChart(ctx){
     var myChart = new Chart (ctx, {
         type: 'bar',
-        data: 
-        options: {
-            responsive: false,
-            animation: {
-                duration: 1000,
-                easing:'easeOutBounce'
+        data:
+        { 
+            labels: ['bag-busmall','banana-busmall','bathroom-busmall','boots-busmall','breakfast-busmall'
+            ,'bubblegum','chair','cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep','tauntaun','unicorn','usb','water-can','wine-glass'],
+            datasets: [{
+                label: 'Number of Votes',
+                data: totalClicks,
+                backgroundColor:[
+                    'bisque', 
+                    'darkgray',
+                    'burlywood',
+                    'lightblue',
+                    'navy'
+                ],
+                borderWidth:1 
+            }]
+        },
+                options: {
+            // responsive: false,
+            // animation: {
+            //     duration: 1000,
+            //     easing:'easeOutBounce'
             }
         },
     scales: {
@@ -159,12 +168,13 @@ function drawChart(ctx){
                 max: 10,
                 min: 0,
                 stepSize: 1.0
+                beginAtZero:true
             }
         }]  
     }
-});
-chartDrawn = true;
 }
+});
+
 
 
 
