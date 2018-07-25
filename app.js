@@ -17,7 +17,11 @@ var resultList = document.getElementById('result-list');
 //constructor for objects
 //templete literal- string literal
 // convert all images to jpg
- function ImageTracker(name) {
+ 
+var busMallNames = [];
+var productVotes = [];
+
+function ImageTracker(name) {
     this.name = name;
     // this.path = 'img/' + name + '.jpg'; //this is the templete literal
     this.path = `img/${name}.jpg`;
@@ -25,6 +29,8 @@ var resultList = document.getElementById('result-list');
     this.votes = 0;
     this.views = 0;
     allProducts.push(this);
+    
+    busMallNames.push(this.name);
    }
    //------this creates all of my product loops -----
    for(var i = 0; i < imgs.length; i++){
@@ -84,10 +90,17 @@ var resultList = document.getElementById('result-list');
     totalClicks++; //here so that if the user clicks outside the box it will not count towards the 25 clicks.
     console.log(totalClicks, 'total clicks');
         if (totalClicks > 24) {
+        //putting all the votes in its own array.
+        for (var k = 0; k < allProducts.length; k++) {
+        //pushing the votes object in its own array
+        productVotes.push(allProducts[k].votes);
+        }
+
         alert('You are out clicks!');
-        container.removeEventListener('click',handleClick);
-        // submitButton.style.display ='block';
+        container.removeEventListener('click',handleClick);// removing event listners
+       
         createResultList();
+        drawChart();
     }
     //console.log(event.target, 'was clicked');
         threeRandomImages();
@@ -104,82 +117,52 @@ var resultList = document.getElementById('result-list');
         ulEl.appendChild(liEl);
     }
 }
-///------------------CHART
 
-//the chart needs to have the name of the item and then the totals of clicks to show on the graph.
-
-// var img = [];
-// var name = [];
-// var votes = [];
-
-// function updateChart(){
-//     for (var i = 0; i < allProducts.length; i++){
-//     votes[i] = allProducts[i].votes;
-//     name[i] = allProducts[i].name;   
-//     }
-// }
-
-// //---------to show the data in a list form 
-// function showPicList(){
-//     var picList = document.getElementById('pic-list');
-//     picList.innerHTML = '';
-//     picList.hidden = false;
-//     picList.textContent ='Click to hide list';
-//     for (var i = 0; i < allProducts.length; i++){
-//         var piLiEL = document.createElement ('li');
-//         piLiEL.textContent = allProducts[i].votes + ', ' + allProducts[i].name + 'votes';
-//         picList.appendChild(piLiEL);
-//     };
-// };
-
-
-// //-------- This is suppose to be a chart---------/
-// var ctx = document.getElementById('mychart')
-// function drawChart(ctx){
-//     var myChart = new Chart (ctx, {
-//         type: 'bar',
-//         data:
-//         { 
-//             labels: ['bag-busmall','banana-busmall','bathroom-busmall','boots-busmall','breakfast-busmall'
-//             ,'bubblegum','chair','cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep','tauntaun','unicorn','usb','water-can','wine-glass'],
-//             datasets: [{
-//                 label: 'Number of Votes',
-//                 data: totalClicks,
-//                 backgroundColor:[
-//                     'bisque', 
-//                     'darkgray',
-//                     'burlywood',
-//                     'lightblue',
-//                     'navy'
-//                 ],
-//                 borderWidth:1 
-//             }]
-//         },
-//                 options: {
-//             // responsive: false,
-//             // animation: {
-//                 //     duration: 1000,
-//                     scales: {
-//                         yAxes: [{
-//                             ticks: {
-//                                 max: 10,
-//                                 min: 0,
-//                                 stepSize: 1.0,
-//                                 beginAtZero:true
-//                             }
-//                         }]  
-//                     }
-//             //     easing:'easeOutBounce'
-//             },
-//         })
-
-// };
+// -------- This is suppose to be a chart---------/
+function drawChart(){
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data:
+        { 
+            labels: busMallNames,
+            datasets: [{
+                label: 'Number of Votes',
+                data: productVotes,
+                backgroundColor:[
+                    'bisque', 
+                    'darkgray',
+                    'burlywood',
+                    'lightblue',
+                    'navy'
+                ],
+            
+            }]
+        },
+                options: {
+                    responsive: false,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                    xAxes: [{
+                        ticks: {
+                            autoSkip: false
+                        }
+                    }]    
+                } 
+        }        
+       
+    });
+}
 
 // drawChart();
 
-//--------Event Listeners-------
+// --------Event Listeners-------
 // document.getElementById('draw-chart').addEventListener('click',function(){
-//     drawChart();
+    // drawChart();
 
 
 
@@ -227,8 +210,3 @@ var resultList = document.getElementById('result-list');
 //                                     }
 //                                 }
 //                                 });
-
-// });
-// document.getElementById('list-button').addEventListener('click',function() {
-
-// }
