@@ -95,7 +95,6 @@ function ImageTracker(name) {
         //pushing the votes object in its own array
         productVotes.push(allProducts[k].votes);
         }
-
         //dom element manipulation styling. to get ridee of the images after the last click
         left.style.display = "none";
         center.style.display = "none";
