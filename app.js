@@ -1,7 +1,6 @@
 'use strict';
 
-var imgs =
-['bag-busmall','banana-busmall','bathroom-busmall','boots-busmall','breakfast-busmall'
+var imgs =['bag-busmall','banana-busmall','bathroom-busmall','boots-busmall','breakfast-busmall'
 ,'bubblegum','chair','cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep','tauntaun','unicorn','usb','water-can','wine-glass'];
 
 
@@ -13,12 +12,12 @@ var container = document.getElementById('container');
 var totalClicks = 0;
 var previousImageDisplay = [];
 var resultList = document.getElementById('result-list');
-var submitButton = document.getElementById('submit-button');
+// var submitButton = document.getElementById('submit-button');
 
 //constructor for objects
 //templete literal- string literal
 // convert all images to jpg
-function ImageTracker(name) {
+ function ImageTracker(name) {
     this.name = name;
     // this.path = 'img/' + name + '.jpg'; //this is the templete literal
     this.path = `img/${name}.jpg`;
@@ -105,48 +104,116 @@ function ImageTracker(name) {
         ulEl.appendChild(liEl);
     }
 }
+///------------------CHART
 
-//-------- chart creation --------------------
-function resultChart()
- //construct arrays of names votes and views
- //views and votes
-    var picNames = [];
-    var picVotes = [];
-    var picViews =[];
-    var picbackgroundColors = [];
+//the chart needs to have the name of the item and then the totals of clicks to show on the graph.
+
+var img = [];
+
+
+function updateChart(){
+    for (var i = 0; i < allProducts.length; i++){
+        clicks[i] = allProducts[i].name;
+        votes[i] = allProducts[i].votes;
+    }
+}
+
+
+var data = {
+    labels: imgs,
+    datasets: [{
+        data: votes,
+        backgroundColor:[
+            'bisque', 
+            'darkgray',
+            'burlywood',
+            'lightblue',
+            'navy'
+        ],
+    hoverBackgroundColor: [
+        'purple',
+        'purple',
+        'purple',
+        'purple',
+        'purple',
+    ]
+}]
+};
+
+
+var ctx = document.getElementById('mychart').getContext('2d');
+function drawChart(ctx){
+    var myChart = new Chart (ctx, {
+        type: 'bar',
+        data: 
+        options: {
+            responsive: false,
+            animation: {
+                duration: 1000,
+                easing:'easeOutBounce'
+            }
+        },
+    scales: {
+        yAxes: [{
+            ticks: {
+                max: 10,
+                min: 0,
+                stepSize: 1.0
+            }
+        }]  
+    }
+});
+chartDrawn = true;
+}
+
+
+
+
+
+
+
+
+// // //-------- chart creation --------------------
+// function resultChart()
+//  //construct arrays of names votes and views
+//  //views and votes
+//     var picNames = [];
+//     var picVotes = [];
+//     var picViews =[];
+//     var picbackgroundColors = [];
     
-    for (img of allProducts) {
-    picNames.push(img.name[0]);
-    picVotes.push(img.totalClicks);
-    picViews.push(img.totalViews);
- }
-    for(img of allProducts){
- //Math.floor(Math.random() * allProducts.length)
+//     for (img of allProducts) {
+//     picNames.push(img.name[0]);
+//     picVotes.push(img.totalClicks);
+//     picViews.push(img.totalViews);
+//  }
+//     for(img of allProducts){ seattle-201d37
+//  //Math.floor(Math.random() * allProducts.length)
     
-    var tmpColor = `rgba(${Math.floor(Math.random() * Math.floor(255))},${Math.floor(Math.random() * Math.floor(255))}, ${Math.floor(Math.random() * Math.floor(255))}, 1)`;
- }
-    var myChart = new Chart(resultsChart, {
-            type: 'bar',
-                data: {
-                labels: [picNames],
-                datasets: [{
-                label: '# of Votes',
-                data: totalClicks,
-                backgroundColor: picbackgroundColors,
-                borderColor: picbackgroundColors,
-                borderWidth: 1
-                }]
-                    },
-                    options: {
-                            scales: {
-                                    yAxes: [{
-                                             ticks: {
-                                     beginAtZero:true
-                                            }
-                                        }]
-                                    }
-                                }
-                                });
+//     var tmpColor = `rgba(${Math.floor(Math.random() * Math.floor(255))},${Math.floor(Math.random() * Math.floor(255))}, ${Math.floor(Math.random() * Math.floor(255))}, 1)`;
+//  }
+//     var myChart = new Chart(resultsChart, {
+//             type: 'bar',
+//                 data: {
+//                 labels: [picNames],
+//                 datasets: [{
+//                 label: '# of Votes',
+//                 data: totalClicks,
+//                 backgroundColor: picbackgroundColors,
+//                 borderColor: picbackgroundColors,
+//                 borderWidth: 1
+//                 }]
+//                     },
+//                     options: {
+//                             scales: {
+//                                     yAxes: [{
+//                                              ticks: {
+//                                      beginAtZero:true
+//                                             }
+//                                         }]
+//                                     }
+//                                 }
+//                                 });
 // document.getElementById('draw-chart').addEventListener('click',function() {
 //  drawChart();
 // });

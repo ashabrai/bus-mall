@@ -1,0 +1,29 @@
+
+section{
+    border:none;
+    width: 500px;
+    float: right;
+    margin-right: 500px;
+    margin-top: 150px;
+}
+img {
+    border: 2px solid green;
+    width: 150px;
+    height: 100px;
+   
+   
+}
+.datalist{
+    border: 2px solid orange;
+    width: 100px;
+    height: 400px;
+    font-size: 10px;
+}
+.title{
+    margin-left: 60px;
+}
+.mainbody{
+  
+    background-color: gray;
+    margin: auto;
+}
