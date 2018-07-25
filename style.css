@@ -1,9 +1,16 @@
 
 section{
+<<<<<<< HEAD
+    border:none;
+    width: 500px;
+    float: right;
+    margin-right: 500px;
+=======
     border:none
     width: 500px;
     float: right;
     margin-right: 250px;
+>>>>>>> 56e688e4e039b5d5b071d61df0306168dce94a06
     margin-top: 150px;
 }
 img {
@@ -23,7 +30,10 @@ img {
     margin-left: 60px;
 }
 .mainbody{
+<<<<<<< HEAD
+=======
    
+>>>>>>> 56e688e4e039b5d5b071d61df0306168dce94a06
   
     background-color: gray;
     margin: auto;
