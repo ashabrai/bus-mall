@@ -1,6 +1,6 @@
 'use strict';
 
-var imgs =['bag-busmall','banana-busmall','bathroom-busmall','boots-busmall','breakfast-busmall'
+var imgs =['bag','banana','bathroom','boots','breakfast'
 ,'bubblegum','chair','cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep','tauntaun','unicorn','usb','water-can','wine-glass'];
 
 
@@ -96,6 +96,11 @@ function ImageTracker(name) {
         productVotes.push(allProducts[k].votes);
         }
 
+        //dom element manipulation styling. to get ridee of the images after the last click
+        left.style.display = "none";
+        center.style.display = "none";
+        right.style.display = "none";
+        
         alert('You are out clicks!');
         container.removeEventListener('click',handleClick);// removing event listners
        
@@ -158,55 +163,3 @@ function drawChart(){
     });
 }
 
-// drawChart();
-
-// --------Event Listeners-------
-// document.getElementById('draw-chart').addEventListener('click',function(){
-    // drawChart();
-
-
-
-
-
-
-// // //-------- chart creation --------------------
-// function resultChart()
-//  //construct arrays of names votes and views
-//  //views and votes
-//     var picNames = [];
-//     var picVotes = [];
-//     var picViews =[];
-//     var picbackgroundColors = [];
-    
-//     for (img of allProducts) {
-//     picNames.push(img.name[0]);
-//     picVotes.push(img.totalClicks);
-//     picViews.push(img.totalViews);
-//  }
-//     for(img of allProducts){ seattle-201d37
-//  //Math.floor(Math.random() * allProducts.length)
-    
-//     var tmpColor = `rgba(${Math.floor(Math.random() * Math.floor(255))},${Math.floor(Math.random() * Math.floor(255))}, ${Math.floor(Math.random() * Math.floor(255))}, 1)`;
-//  }
-//     var myChart = new Chart(resultsChart, {
-//             type: 'bar',
-//                 data: {
-//                 labels: [picNames],
-//                 datasets: [{
-//                 label: '# of Votes',
-//                 data: totalClicks,
-//                 backgroundColor: picbackgroundColors,
-//                 borderColor: picbackgroundColors,
-//                 borderWidth: 1
-//                 }]
-//                     },
-//                     options: {
-//                             scales: {
-//                                     yAxes: [{
-//                                              ticks: {
-//                                      beginAtZero:true
-//                                             }
-//                                         }]
-//                                     }
-//                                 }
-//                                 });
