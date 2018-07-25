@@ -83,10 +83,10 @@ var resultList = document.getElementById('result-list');
     }
     totalClicks++; //here so that if the user clicks outside the box it will not count towards the 25 clicks.
     console.log(totalClicks, 'total clicks');
-        if (totalClicks > 19) {
+        if (totalClicks > 24) {
         alert('You are out clicks!');
         container.removeEventListener('click',handleClick);
-        submitButton.style.display ='block';
+        // submitButton.style.display ='block';
         createResultList();
     }
     //console.log(event.target, 'was clicked');
@@ -109,74 +109,77 @@ var resultList = document.getElementById('result-list');
 //the chart needs to have the name of the item and then the totals of clicks to show on the graph.
 
 // var img = [];
-var name = [];
-var votes = [];
+// var name = [];
+// var votes = [];
 
-function updateChart(){
-    for (var i = 0; i < allProducts.length; i++){
-    votes[i] = allProducts[i].votes;
-    name[i] = allProducts[i].name;   
-    }
-}
+// function updateChart(){
+//     for (var i = 0; i < allProducts.length; i++){
+//     votes[i] = allProducts[i].votes;
+//     name[i] = allProducts[i].name;   
+//     }
+// }
 
-//---------to show the data in a list form 
-function showPicList(){
-    var picList = document.getElementById('pic-list');
-    picList.innerHTML = '';
-    picList.hidden = false;
-    picList.textContent ='Click to hide list';
-    for (var i = 0; i < allProducts.length; i++){
-        var piLiEL = document.createElement ('li');
-        piLiEL.textContent = allProducts[i].votes + ', ' + allProducts[i].name + 'votes';
-        picList.appendChild(piLiEL);
-    };
-};
-
-
-//-------- This is suppose to be a chart---------/
-var ctx = document.getElementById('mychart').getContext('2d');
-function drawChart(ctx){
-    var myChart = new Chart (ctx, {
-        type: 'bar',
-        data:
-        { 
-            labels: ['bag-busmall','banana-busmall','bathroom-busmall','boots-busmall','breakfast-busmall'
-            ,'bubblegum','chair','cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep','tauntaun','unicorn','usb','water-can','wine-glass'],
-            datasets: [{
-                label: 'Number of Votes',
-                data: totalClicks,
-                backgroundColor:[
-                    'bisque', 
-                    'darkgray',
-                    'burlywood',
-                    'lightblue',
-                    'navy'
-                ],
-                borderWidth:1 
-            }]
-        },
-                options: {
-            // responsive: false,
-            // animation: {
-            //     duration: 1000,
-            //     easing:'easeOutBounce'
-            }
-        },
-    scales: {
-        yAxes: [{
-            ticks: {
-                max: 10,
-                min: 0,
-                stepSize: 1.0
-                beginAtZero:true
-            }
-        }]  
-    }
-}
-});
+// //---------to show the data in a list form 
+// function showPicList(){
+//     var picList = document.getElementById('pic-list');
+//     picList.innerHTML = '';
+//     picList.hidden = false;
+//     picList.textContent ='Click to hide list';
+//     for (var i = 0; i < allProducts.length; i++){
+//         var piLiEL = document.createElement ('li');
+//         piLiEL.textContent = allProducts[i].votes + ', ' + allProducts[i].name + 'votes';
+//         picList.appendChild(piLiEL);
+//     };
+// };
 
 
+// //-------- This is suppose to be a chart---------/
+// var ctx = document.getElementById('mychart')
+// function drawChart(ctx){
+//     var myChart = new Chart (ctx, {
+//         type: 'bar',
+//         data:
+//         { 
+//             labels: ['bag-busmall','banana-busmall','bathroom-busmall','boots-busmall','breakfast-busmall'
+//             ,'bubblegum','chair','cthulhu','dog-duck','dragon','pen','pet-sweep','scissors','shark','sweep','tauntaun','unicorn','usb','water-can','wine-glass'],
+//             datasets: [{
+//                 label: 'Number of Votes',
+//                 data: totalClicks,
+//                 backgroundColor:[
+//                     'bisque', 
+//                     'darkgray',
+//                     'burlywood',
+//                     'lightblue',
+//                     'navy'
+//                 ],
+//                 borderWidth:1 
+//             }]
+//         },
+//                 options: {
+//             // responsive: false,
+//             // animation: {
+//                 //     duration: 1000,
+//                     scales: {
+//                         yAxes: [{
+//                             ticks: {
+//                                 max: 10,
+//                                 min: 0,
+//                                 stepSize: 1.0,
+//                                 beginAtZero:true
+//                             }
+//                         }]  
+//                     }
+//             //     easing:'easeOutBounce'
+//             },
+//         })
 
+// };
+
+// drawChart();
+
+//--------Event Listeners-------
+// document.getElementById('draw-chart').addEventListener('click',function(){
+//     drawChart();
 
 
 
@@ -224,8 +227,7 @@ function drawChart(ctx){
 //                                     }
 //                                 }
 //                                 });
-// document.getElementById('draw-chart').addEventListener('click',function() {
-//  drawChart();
+
 // });
 // document.getElementById('list-button').addEventListener('click',function() {
 
