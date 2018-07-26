@@ -1,40 +1,48 @@
 
 section{
-<<<<<<< HEAD
     border:none;
-    width: 500px;
+    width: 800px;
     float: right;
-    margin-right: 500px;
-=======
-    border:none
-    width: 500px;
-    float: right;
-    margin-right: 250px;
->>>>>>> 56e688e4e039b5d5b071d61df0306168dce94a06
-    margin-top: 150px;
+    margin-right: 200px;
+    margin-top: 80px;
 }
 img {
     border: 2px solid green;
-    width: 150px;
-    height: 100px;
+    width: 250px;
+    height: 200px;
    
    
 }
 .datalist{
     border: 2px solid orange;
     width: 100px;
-    height: 400px;
+    height: 550px;
     font-size: 10px;
+    margin-left: 50px;
+    color: white;
+    font-size: 12px;
 }
 .title{
     margin-left: 60px;
 }
 .mainbody{
-<<<<<<< HEAD
-=======
-   
->>>>>>> 56e688e4e039b5d5b071d61df0306168dce94a06
   
     background-color: gray;
     margin: auto;
+}
+.mychart{
+    margin-left: 400px;
+    margin-bottom:800px;
+
+}
+.title{
+    text-align:center;
+    color: white;
+    margin-bottom: 20px;
+    padding-top: 5px;
+}
+.parOne {
+   color: white;
+   font-size: 20px;
+
 }
