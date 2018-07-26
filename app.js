@@ -31,7 +31,7 @@ var productVotes = [];
 
 
 
-function ImageTracker(name) { //this is my constructor function 
+function ImageTracker(name) { //this is my constructor function
   this.name = name;
   // this.path = 'img/' + name + '.jpg'; //this is the templete literal
   this.path = `img/${name}.jpg`;
@@ -52,14 +52,13 @@ function randomNum() {
 }
 //--------this is generating random images----
 function threeRandomImages() {
-  //----------for each empty img tag assign a random .src attribute
+//----------for each empty img tag assign a random .src attribute
   var ranIndexes =[];
   ranIndexes[0]=randomNum();
   ranIndexes[1]=randomNum();
   ranIndexes[2]=randomNum();
   // this is randomizing the images. Its going through this loop to make sure that no photos loaded again
   while (ranIndexes[0] === ranIndexes[1] || ranIndexes[0] === ranIndexes[2] || ranIndexes[1] === ranIndexes[2] || previousImageDisplay.includes(ranIndexes[0])|| previousImageDisplay.includes(ranIndexes[1]) ||previousImageDisplay.includes(ranIndexes[2])) {
-
     ranIndexes[0] = randomNum();
     ranIndexes[1] = randomNum();
     ranIndexes[2] = randomNum();
@@ -110,7 +109,7 @@ function handleClick(event){
       //pushing the votes object in its own array
       productVotes.push(allProducts[k].votes);
     }
-    //dom element manipulation styling. to get ridee of the images after the last click
+    //dom element manipulation styling. to get rid of the images after the last click
     left.style.display = 'none';
     center.style.display = 'none';
     right.style.display = 'none';
@@ -147,13 +146,13 @@ function updateLocalStorage(){
   if(totalClicks === 25){
     for(var c in allProducts){
       newVotes[c] = allProducts[c].votes; //taking the new votes and putting it in the array
-      // allProducts = JSON.parse(localStorage.allProducts);      
+      // allProducts = JSON.parse(localStorage.allProducts);
     }
     var completeTotal =[];// this new array will equal the old and new clicks.
     if(localStorage.allProducts){ //this is just checking if there is any info in LS
       for(var e = 0; e < newVotes.length; e++){ // this is just adding to whats in LS
         console.log(JSON.parse(localStorage.allProducts));
-        
+
         completeTotal[e] = newVotes[e] + JSON.parse(localStorage.allProducts)[e]; //this is just puttin in the empty array completeTotal
       }
     }
