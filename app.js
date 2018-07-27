@@ -148,18 +148,18 @@ function updateLocalStorage(){
       newVotes[c] = allProducts[c].votes; //taking the new votes and putting it in the array
       // allProducts = JSON.parse(localStorage.allProducts);
     }
-    var completeTotal =[];// this new array will equal the old and new clicks.
+    //var completeTotal =[];// this new array will equal the old and new clicks.
     if(localStorage.allProducts){ //this is just checking if there is any info in LS
       for(var e = 0; e < newVotes.length; e++){ // this is just adding to whats in LS
         console.log(JSON.parse(localStorage.allProducts));
 
-        completeTotal[e] = newVotes[e] + JSON.parse(localStorage.allProducts)[e]; //this is just puttin in the empty array completeTotal
+        productVotes[e] = newVotes[e] + JSON.parse(localStorage.allProducts)[e]; //this is just puttin in the empty array completeTotal
       }
     }
     else {
-      completeTotal = newVotes;
+      productVotes = newVotes;
     }
-    localStorage.setItem('allProducts', JSON.stringify(completeTotal)); //this is always going to be set to LS reguardless if there is info
+    localStorage.setItem('allProducts', JSON.stringify(productVotes)); //this is always going to be set to LS reguardless if there is info
   }
 }
 
